@@ -28,9 +28,9 @@ namespace Beehive
             return false;
         }
 
-        private bool WorkTheNextShift()
+        public string WorkTheNextShift()
         {
-
+            return "text"; //TODO: text is Report
         }
     }
 }

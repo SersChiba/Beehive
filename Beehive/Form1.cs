@@ -24,9 +24,17 @@ namespace Beehive
             workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" });
             workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" });
             workers[3] = new Worker(new string[] { "Nectar collector", "Honey manufacturing", "Egg care", "Baby bee tutoring" });
-            queen = new Queen(workers);
+            queen = new Queen(workers);            
+        }
 
-            queen.AssignWork("Egg care", 2); //TODO: parameters should be values from form's controls
+        private void button1_Click(object sender, EventArgs e)
+        {
+            queen.WorkTheNextShift();
+        }
+
+        private void assignJobButton_Click(object sender, EventArgs e)
+        {
+            queen.AssignWork(workerBeeJob.Text,(int)shifts.Value);
         }
     }
 }

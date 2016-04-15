@@ -10,14 +10,7 @@ namespace Beehive
     {
 
         private string[] jobsICanDo;
-        public string CurrentJob
-        {
-            get
-            {
-
-                return "";
-            }
-        }
+        public readonly string CurrentJob;
         private int shiftsToWork { get; set; }
         private int shiftsWorked { get; set; }
 
@@ -37,7 +30,7 @@ namespace Beehive
                 {
                     if (item.Contains(jobToDo))
                     {
-
+                        this.CurrentJob = jobToDo;
                         return true;
                     }
 
