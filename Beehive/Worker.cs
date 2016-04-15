@@ -10,42 +10,42 @@ namespace Beehive
     {
 
         private string[] jobsICanDo;
-        public readonly string CurrentJob;
-        private int shiftsToWork { get; set; }
-        private int shiftsWorked { get; set; }
+        private string currentJob = "";
+        public string CurrentJob { get { return currentJob; } }
+        public int ShiftsLeft { get { return shiftsToWork - shiftsWorked; } }
+        private int shiftsToWork;
+        private int shiftsWorked;
 
-        public Worker(string[] jobICanDO)
+        public Worker(string[] jobsICanDO)
         {
-            this.jobsICanDo = jobICanDO;
+            this.jobsICanDo = jobsICanDO;
         }
 
         internal bool DoThisJob(string jobToDo, int shiftsCount)
         {
-            //TODO: check if able to do job
-            if (!string.IsNullOrEmpty(CurrentJob))
+            if (!string.IsNullOrEmpty(currentJob))
                 return false;
-            else
-            {
-                foreach (string item in jobsICanDo)
+            foreach (string item in jobsICanDo)
+                if (item.Contains(jobToDo))
                 {
-                    if (item.Contains(jobToDo))
-                    {
-                        this.CurrentJob = jobToDo;
-                        return true;
-                    }
-
+                    this.shiftsToWork = shiftsCount;
+                    shiftsWorked = 0;
+                    currentJob = jobToDo;
+                    return true;
                 }
-                return false;
-            }
+            return false;
         }
 
         public bool DidYouFinish()
         {
-            this.shiftsWorked++;
-            this.shiftsToWork--;
-            if (shiftsToWork<=0)
+            if (string.IsNullOrEmpty(currentJob))
+                return false;
+            shiftsWorked++;
+            if (shiftsWorked > shiftsToWork)
             {
-                CurrentJob = ""; //Hooow???
+                shiftsToWork = 0;
+                shiftsWorked = 0;
+                currentJob = "";
                 return true;
             }
             return false;

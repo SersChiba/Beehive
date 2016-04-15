@@ -13,28 +13,31 @@ namespace Beehive
 {
     public partial class Form1 : Form
     {
-        Queen queen;
+        private Queen queen;
         Worker[] workers = new Worker[4];
 
         public Form1()
         {
             InitializeComponent();
-
+            workerBeeJob.SelectedIndex = 0;
             workers[0] = new Worker(new string[] { "Nectar collector", "Honey manufacturing" });
             workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" });
             workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" });
             workers[3] = new Worker(new string[] { "Nectar collector", "Honey manufacturing", "Egg care", "Baby bee tutoring" });
-            queen = new Queen(workers);            
+            queen = new Queen(workers);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void workNextShiftButton_Click(object sender, EventArgs e)
         {
-            queen.WorkTheNextShift();
+            report.Text = queen.WorkTheNextShift();
         }
 
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            queen.AssignWork(workerBeeJob.Text,(int)shifts.Value);
+            if (queen.AssignWork(workerBeeJob.Text, (int)shifts.Value) == false)
+                MessageBox.Show("No workers are available to do the job '" + workerBeeJob.Text + "'", "The queen says...");
+            else
+                MessageBox.Show("The job '" + workerBeeJob.Text + "' will be done in " + shifts.Value + " shifts", "The queen says...");
         }
     }
 }

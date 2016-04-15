@@ -49,7 +49,7 @@
             this.workNextShiftButton.TabIndex = 0;
             this.workNextShiftButton.Text = "Work the next shift";
             this.workNextShiftButton.UseVisualStyleBackColor = true;
-            this.workNextShiftButton.Click += new System.EventHandler(this.button1_Click);
+            this.workNextShiftButton.Click += new System.EventHandler(this.workNextShiftButton_Click);
             // 
             // groupBox1
             // 
