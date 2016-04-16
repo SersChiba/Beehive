@@ -34,10 +34,10 @@ namespace Beehive
                     report += "\r\nWorker #" + (i + 1) + " finished the job";
                 if (string.IsNullOrEmpty(workers[i].CurrentJob))
                     report += "\r\nWorker #" + (i + 1) + " is not working";
-                else if (workers[i].ShiftsLeft>0)
-                    report += "\r\nWorker #" + (i + 1) + " is doing '"+workers[i].CurrentJob+"' for "+workers[i].ShiftsLeft+" more shifts.";
+                else if (workers[i].ShiftsLeft > 0)
+                    report += "\r\nWorker #" + (i + 1) + " is doing '" + workers[i].CurrentJob + "' for " + workers[i].ShiftsLeft + " more shifts";
                 else
-                    report+="\r\nWorker #" + (i + 1) + " will be done with '"+workers[i].CurrentJob+"' after this shift/r/n";
+                    report += "\r\nWorker #" + (i + 1) + " will be done with '" + workers[i].CurrentJob + "' after this shift";
             }
             return report;
         }
