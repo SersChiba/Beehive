@@ -60,8 +60,7 @@ namespace Beehive
     class StingPatrol : Worker
     {
         public StingPatrol(string[] jobsICanDO, double weightMg) : base(jobsICanDO, weightMg)
-        {
-        }
+        { }
 
         public int AlertLevel { get; private set; }
         public int StingerLength { get; set; }
@@ -74,39 +73,37 @@ namespace Beehive
             return false;
         }
         public void Sting(string Enemy)
-        {
-
-        }
+        { }
     }
 
     class NectarCollector : Worker
     {
         public NectarCollector(string[] jobsICanDO, double weightMg) : base(jobsICanDO, weightMg)
-        {
-        }
+        { }
 
         public int Nectar { get; set; }
         public void FindFlowers()
-        {
-
-        }
+        { }
         public void GatherNectar()
-        {
-
-        }
+        {  }
         public void ReturnToHive()
-        {
-
-        }
+        { }
     }
-    interface IStingPatrol
+    interface IWorker
+    {
+        string Job { get; }
+        int ShiftsLeft { get; }
+        void DoThisJob(string job, int shifts);
+        void WorkOneShift();
+    }
+    interface IStingPatrol : IWorker
     {
         int AlertLevel { get; }
         int StingerLength { get; set; }
         bool LookForEnemies();
-        bool SharpenStinger(int length);
+        int SharpenStinger(int length);
     }
-    interface INectarCollector
+    interface INectarCollector : IWorker
     {
         int Nectar { get; set; }
         void FindFlowers();

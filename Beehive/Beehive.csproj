@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Bee.cs" />
     <Compile Include="NectarStinger.cs" />
+    <Compile Include="Robot.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

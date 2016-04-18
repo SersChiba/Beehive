@@ -14,17 +14,19 @@ namespace Beehive
 
         public int AlertLevel { get; private set; }
 
-        public int Nectar {get; set; }
+        public string Job { get; }
+
+        public int Nectar { get; set; }
 
         public int StingerLength { get; set; }
 
         public void FindFlowers()
         {
-            
+
         }
         public void GatherNectar()
         {
-           
+
         }
         public bool LookForEnemies()
         {
@@ -32,11 +34,17 @@ namespace Beehive
         }
         public void ReturnToHive()
         {
-            
+
         }
-        public bool SharpenStinger(int length)
+        public int SharpenStinger(int length)
         {
-            return true;
+            return 11;
         }
+
+        public void WorkOneShift()
+        { }
+
+        void IWorker.DoThisJob(string job, int shifts)
+        { }
     }
 }
