@@ -44,5 +44,9 @@ namespace Beehive
             report += "\r\nTotal honey consumed for the shift: " + honeyConsumedMg + " units.";
             return report;
         }
+        private void DefendTheHive(IStingPatrol patroller)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Beehive
         private int shiftsToWork;
         private int shiftsWorked;
 
-        public Worker(string[] jobsICanDO, double weightMg):base(weightMg)
+        public Worker(string[] jobsICanDO, double weightMg) : base(weightMg)
         {
             this.jobsICanDo = jobsICanDO;
         }
@@ -53,7 +53,64 @@ namespace Beehive
 
         public override double HoneyConsumptionRate()
         {
-            return base.HoneyConsumptionRate()+(.65*shiftsWorked);
-        }       
+            return base.HoneyConsumptionRate() + (.65 * shiftsWorked);
+        }
+    }
+
+    class StingPatrol : Worker
+    {
+        public StingPatrol(string[] jobsICanDO, double weightMg) : base(jobsICanDO, weightMg)
+        {
+        }
+
+        public int AlertLevel { get; private set; }
+        public int StingerLength { get; set; }
+        public bool SharpenStinger(int Length)
+        {
+            return true;
+        }
+        public bool LookForEnemies()
+        {
+            return false;
+        }
+        public void Sting(string Enemy)
+        {
+
+        }
+    }
+
+    class NectarCollector : Worker
+    {
+        public NectarCollector(string[] jobsICanDO, double weightMg) : base(jobsICanDO, weightMg)
+        {
+        }
+
+        public int Nectar { get; set; }
+        public void FindFlowers()
+        {
+
+        }
+        public void GatherNectar()
+        {
+
+        }
+        public void ReturnToHive()
+        {
+
+        }
+    }
+    interface IStingPatrol
+    {
+        int AlertLevel { get; }
+        int StingerLength { get; set; }
+        bool LookForEnemies();
+        bool SharpenStinger(int length);
+    }
+    interface INectarCollector
+    {
+        int Nectar { get; set; }
+        void FindFlowers();
+        void GatherNectar();
+        void ReturnToHive();
     }
 }
